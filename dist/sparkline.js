@@ -5,32 +5,11 @@
         define(["jquery", "depp"], factory);
     } else if (typeof module === 'object' && module.exports) {
         // Node/CommonJS
-        module.exports = function(root, jQuery, moment) {
-            if (jQuery === undefined) {
-                // require('jQuery') returns a factory that requires window to
-                // build a jQuery instance, we normalize how we use modules
-                // that require this pattern but the window provided is a noop
-                // if it's defined (how jquery works)
-                if (typeof window !== 'undefined') {
-                    jQuery = require('jquery');
-                } else {
-                    jQuery = require('jquery')(root);
-                }
-            }
-            if (depp === undefined) {
-                if (typeof window !== 'undefined') {
-                    depp = require('johnnydepp');
-                } else {
-                    depp = require('johnnydepp')(root);
-                }
-            }
-            factory(jQuery, depp, window, document);
-            return jQuery;
-        };
+        factory(require('jquery'), require('johnnydepp'));
     } else {
-        factory(jQuery, depp, window, document);
+        factory(jQuery, depp);
     }
-})(function($, depp, window, document) {
+})(function($, depp) {
     'use strict';
 
     if (!depp.isDefined('chartjs')) {
