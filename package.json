@@ -1,0 +1,12 @@
+{
+  "name": "@blocksera/sparkline",
+  "version": "1.0.0",
+  "main": "dist/sparkline.js",
+  "repository": "https://github.com/blocksera/sparkline",
+  "author": "Blocksera",
+  "license": "MIT",
+  "dependencies": {
+    "johnnydepp": "^0.1.4",
+    "jquery": "^3.6.1"
+  }
+}
